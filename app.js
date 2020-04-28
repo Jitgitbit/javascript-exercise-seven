@@ -18,6 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
     'url(images/yellow_block.png)'
   ]
 
+  let squares = Array.from(grid.querySelectorAll('div'))
+
   //The Tetrominoes
   const lTetromino = [
     [1,width+1,width*2+1,2],
@@ -54,4 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
   //Randomly Select Tetromino
   let random = Math.floor(Math.random()*theTetrominoes.length)
   let current = theTetrominoes[random][currentRotation]
+
+  //move the Tetromino moveDown
+  let currentPosition = 4
 });
