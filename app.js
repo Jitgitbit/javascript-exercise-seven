@@ -172,6 +172,8 @@ document.addEventListener('DOMContentLoaded', () => {
     freeze()
   }
 
+  const startBtn = document.querySelector('.button')
+
   startBtn.addEventListener('click', () => {
     if(timerId) {
       clearInterval(timerId)
