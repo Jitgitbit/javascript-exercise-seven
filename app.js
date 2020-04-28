@@ -110,6 +110,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     draw()
   }
+  //Rotate the Tetromino
+  function rotate() {
+    undraw()
+    currentRotation ++
+    if(currentRotation === current.length) {
+      currentRotation=0
+    }
+    current = theTetrominoes[random][currentRotation]
+    draw()
+  }
 
   //Styling eventListeners
   const hamburgerBtn = document.querySelector('.toggler')
