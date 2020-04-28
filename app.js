@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
   let nextRandom = 0
 
   let currentIndex = 0
-  let currentRotation = 0
 
   const colors = [
     'url(images/blue_block.png)',
@@ -19,6 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
   ]
 
   let squares = Array.from(grid.querySelectorAll('div'))
+
+  const span = document.getElementsByClassName('close')[0]
 
   //The Tetrominoes
   const lTetromino = [
@@ -55,8 +56,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
   //Randomly Select Tetromino
   let random = Math.floor(Math.random()*theTetrominoes.length)
+  let currentRotation = 0
   let current = theTetrominoes[random][currentRotation]
 
   //move the Tetromino moveDown
   let currentPosition = 4
+
+  //assign functions to keycodes
+  function control(e) {
+    if(e.keyCode === 39) {
+      moveright()
+    } else if (e.keyCode ===38) {
+      rotate()
+    } else if (e.keyCode ===37) {
+      moveleft()
+    } else if (e.keyCode === 40) {
+      moveDown()
+    }
+  }
+  document.addEventListener('keyup', control)
 });
