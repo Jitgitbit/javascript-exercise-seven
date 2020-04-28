@@ -3,32 +3,36 @@ div {
   height: 20px;
   width: 20px;
 }
-
 .grid {
   background-color: blue;
-  margin-top: 10px;
   width: 200px;
   height: 400px;
   display: flex;
   flex-wrap: wrap;
 }
-
+.previous-shape {
+  width: 100px;
+  margin-left: 57px;
+}
+.previous-grid {
+  width:80px;
+  height: 80px;
+  display: flex;
+  flex-wrap: wrap;
+  width: 80px;
+}
 .block {
   background-image: url(../images/blue_block.png);
 }
-
 .block2 {
   background-image: url(../images/purple_block.png);
 }
-
 .block3 {
   background-image: url(../images/green_block.png);
 }
-
 .block4 {
   background-image: url(../images/navy_block.png);
 }
-
 .block5 {
   background-image: url(../images/pink_block.png);
 }
