@@ -144,7 +144,45 @@ document.addEventListener('DOMContentLoaded', () => {
       displaySquares[displayIndex + index].style.backgroundImage = colors[nextRandom]
     })
   }
-  displayShape()
+
+  //freeze the shape
+  function freeze() {
+    // if block has settled
+    if(current.some(index => squares[currentPosition + index + width].classList.contains('block3') || squares[currentPosition + index + width].classList.contains('block2'))) {
+      // make it block2
+      current.forEach(index => squares[index + currentPosition].classList.add('block2'))
+      // start a new tetromino falling
+      random = nextRandom
+      nextRandom = Math.floor(Math.random() * theTetrominoes.length)
+      current = theTetrominoes[random][currentRotation]
+      currentPosition = 4
+      draw()
+      displayShape()
+      addScore()
+      gameOver()
+    }
+  }
+  freeze()
+
+  //move down on loop
+  function moveDown() {
+    undraw()
+    currentPosition = currentPosition += width
+    draw()
+    freeze()
+  }
+
+  startBtn.addEventListener('click', () => {
+    if(timerId) {
+      clearInterval(timerId)
+      timerId = null
+    } else {
+      draw()
+      timerId = setInterval(moveDown, 1000)
+      nextRandom = Math.floor(Math.random()*theTetrominoes.length)
+      displayShape()
+    }
+  })
 
   //Styling eventListeners
   const hamburgerBtn = document.querySelector('.toggler')
