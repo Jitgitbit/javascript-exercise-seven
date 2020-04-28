@@ -197,6 +197,29 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  //Add score
+  function addScore() {
+    for (currentIndex = 0; currentIndex < 199;currentIndex += width) {
+      const row = [currentIndex,currentIndex+1,currentIndex+2,currentIndex+3,currentIndex+4,currentIndex+5,currentIndex+6,currentIndex+7,currentIndex+8,currentIndex+9]
+      if(row.every(index => squares[index].classList.contains('block2'))) {
+        score += 10
+        lines +=1
+        scoreDisplay.innerHTML = score
+        linesDisplay.innerHTML = lines
+        row.forEach(index => {
+          squares[index].style.backgroundImage = 'none'
+          squares[index].classList.remove('block2') || squares[index].classList.remove('block')
+
+        })
+        //splice array
+        const squaresRemoved = squares.splice(currentIndex,width)
+        squares = squaresRemoved.concat(squares)
+        squares.forEach(cell => grid.appendChild(cell))
+      }
+    }
+  }
+
+
   //Styling eventListeners
   const hamburgerBtn = document.querySelector('.toggler')
   const span = document.getElementsByClassName('close')[0]
