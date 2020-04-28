@@ -1,5 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
   const grid = document.querySelector('.grid')
+  const scoreDisplay = document.querySelector('.score-display')
+  const linesDisplay = document.querySelector('.lines-score')
+
   const width = 10
   const height = 20
   let score = 0
@@ -185,6 +188,14 @@ document.addEventListener('DOMContentLoaded', () => {
       displayShape()
     }
   })
+
+  //Game Over
+  function gameOver() {
+    if(current.some(index => squares[currentPosition + index].classList.contains('block2'))) {
+      scoreDisplay.innerHTML = 'end'
+      clearInterval(timerId)
+    }
+  }
 
   //Styling eventListeners
   const hamburgerBtn = document.querySelector('.toggler')
