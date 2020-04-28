@@ -218,16 +218,4 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
   }
-
-
-  //Styling eventListeners
-  const hamburgerBtn = document.querySelector('.toggler')
-  const span = document.getElementsByClassName('close')[0]
-
-  hamburgerBtn.addEventListener('click', () => {
-    menu.style.display = 'flex'
-  })
-  span.addEventListener('click', () => {
-    menu.style.display = 'none'
-  })
 });
