@@ -19,8 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let squares = Array.from(grid.querySelectorAll('div'))
 
-  const span = document.getElementsByClassName('close')[0]
-
   //The Tetrominoes
   const lTetromino = [
     [1,width+1,width*2+1,2],
@@ -75,4 +73,31 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
   document.addEventListener('keyup', control)
+
+  //draw the shape
+  function draw() {
+    current.forEach( index => {
+      squares[currentPosition + index].classList.add('block')
+      squares[currentPosition + index].style.backgroundImage = colors[random]
+    })
+  }
+  //undraw the shape
+  function undraw() {
+    current.forEach( index => {
+      squares[currentPosition + index].classList.remove('block')
+      squares[currentPosition + index].style.backgroundImage = 'none'
+
+    })
+  }
+
+  //Styling eventListeners
+  const hamburgerBtn = document.querySelector('.toggler')
+  const span = document.getElementsByClassName('close')[0]
+
+  hamburgerBtn.addEventListener('click', () => {
+    menu.style.display = 'flex'
+  })
+  span.addEventListener('click', () => {
+    menu.style.display = 'none'
+  })
 });
