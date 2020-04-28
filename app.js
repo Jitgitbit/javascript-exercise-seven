@@ -5,7 +5,6 @@ document.addEventListener('DOMContentLoaded', () => {
   let score = 0
   let lines = 0
   let timerId
-  let nextRandom = 0
 
   let currentIndex = 0
 
@@ -125,6 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const displayWidth = 4
   const displaySquares = document.querySelectorAll('.previous-grid div')
   let displayIndex = 0
+  let nextRandom = 0
 
   const smallTetrominoes = [
     [1,displayWidth+1,displayWidth*2+1,2], /* lTetromino */
@@ -144,6 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
       displaySquares[displayIndex + index].style.backgroundImage = colors[nextRandom]
     })
   }
+  displayShape()
 
   //Styling eventListeners
   const hamburgerBtn = document.querySelector('.toggler')
