@@ -114,13 +114,17 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   //Rotate the Tetromino
   function rotate() {
-    undraw()
-    currentRotation ++
-    if(currentRotation === current.length) {
-      currentRotation=0
+    const isAtLeftEdge = current.some(index => (currentPosition + index) % width === 0)
+    const isAtRightEdge = current.some(index => (currentPosition + index) % width === width - 1)
+    if(!isAtLeftEdge && !isAtRightEdge){
+      undraw()
+      currentRotation++
+      if(currentRotation === current.length){
+        currentRotation = 0
+      }
+      current = theTetrominoes[random][currentRotation]
+      draw()
     }
-    current = theTetrominoes[random][currentRotation]
-    draw()
   }
 
   //show previous tetromino in scoreDisplay
